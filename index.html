@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert to NATO Alphabets</title>
+</head>
+<body>
+  <textarea name="sentence" id="sentence" cols="30" rows="10" onkeyup="convert()"></textarea>
+  <div id="result"></div>
+</body>
+</html>
+
+<script>
+const nato = {
+  a : 'alpha',
+  b : 'bravo',
+  c : 'charlie',
+  d : 'delta',
+  e : 'echo',
+  f : 'foxtrot',
+  g : 'golf',
+  h : 'hotel',
+  i : 'india',
+  j : 'juliett',
+  k : 'kilo',
+  l : 'lima',
+  m : 'mike',
+  n : 'november',
+  o : 'oscar',
+  p : 'papa',
+  q : 'quebec',
+  r : 'romeo',
+  s : 'sierra',
+  t : 'tango',
+  u : 'uniform',
+  v : 'victor',
+  w : 'whisky',
+  x : 'x-ray',
+  y : 'yankee',
+  z : 'zulu'
+}
+
+var convert = () => {
+  let sentence = document.querySelector('textarea[name=sentence]')?.value;
+  let convertSentence = '';
+  if (sentence) {
+    for (const letter of sentence) {
+      if (nato[letter.toLowerCase()]) {
+        convertSentence += capitalizeFirstLetter(nato[letter.toLowerCase()]);
+
+      } else {
+        convertSentence += letter;
+      }
+      convertSentence += ' ';
+    }
+    document.querySelector('#result').innerHTML = convertSentence;
+  }
+}
+
+var capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+</script>
